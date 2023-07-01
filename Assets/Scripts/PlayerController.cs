@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float initvel = 0.1f;
 
     public Vector3 velocity;
+    public Vector3 gravity;
     public AnimationCurve curve;
 
 
@@ -80,16 +81,19 @@ public class PlayerController : MonoBehaviour
         //}
 
         velocity += wishdir * acceleration /** mult*/ * Time.deltaTime;
-
         velocity = Vector3.ClampMagnitude(velocity, speed);
-        velocity.y += -9.81f * Time.deltaTime;
+
+        if (controller.isGrounded)
+            gravity = Vector3.zero;
+        else
+            gravity += Vector3.down * 9.81f * Time.deltaTime;
 
         float runSpeedMult = 1.0f;
 
         if (Input.GetKey(KeyCode.LeftShift))
             runSpeedMult = runSpeed;
 
-        controller.Move(velocity * runSpeedMult * Time.deltaTime);
+        controller.Move(gravity * Time.deltaTime + (velocity * runSpeedMult) * Time.deltaTime);
         CameraRotation();
     }
 

@@ -17,7 +17,7 @@ public abstract class InteractionRegion : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.transform == client.transform)
+        if (client != null && other.transform == client.transform)
         {
             client = null;
         }

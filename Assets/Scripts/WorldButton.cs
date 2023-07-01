@@ -13,7 +13,8 @@ public class WorldButton : InteractionRegion
 
     public void Update()
     {
-        activeCanvas.SetActive(HasClient());
+        if (activeCanvas != null)
+            activeCanvas.SetActive(HasClient());
         if (!HasClient())
             return;
         if (Input.GetKeyDown(key))
