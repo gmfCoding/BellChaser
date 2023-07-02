@@ -62,10 +62,7 @@ public class ElevatorPad : NetworkBehaviour
         {
             timer += Time.fixedDeltaTime;
             if (timer > autoFloorTime)
-            {
-                timer = 0;
-                floor.Value = startFloor;
-            }
+                requestFloorServerRpc(startFloor);
         }
         if (Mathf.Abs(transform.localPosition.y - floors[floor.Value]) > 0.01)
         {

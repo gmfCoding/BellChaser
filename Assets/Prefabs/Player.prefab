@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7920909101754740047}
-  - component: {fileID: 5836411881821379156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 2276185137210789029}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5836411881821379156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33028626998396675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda46f58c72c7d34f9de6d045eb4dcf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3099537607741014388
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +46,7 @@ GameObject:
   - component: {fileID: 5273215291736199353}
   - component: {fileID: -8713248488755482553}
   - component: {fileID: 7482889059844857937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -79,8 +66,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7920909101754740047}
+  - {fileID: 3781220557723518758}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6939400579398216879
 CharacterController:
@@ -126,6 +114,7 @@ MonoBehaviour:
   drag: 6
   initvel: 0.1
   velocity: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
   curve:
     serializedVersion: 2
     m_Curve: []
@@ -165,6 +154,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dae5a8ca9af7c4eb12ac1e517cdda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaserColour: {r: 0.7264151, g: 0, b: 0, a: 0}
+  hiderColour: {r: 0.08848335, g: 0.5660378, b: 0, a: 0}
+  taggedColour: {r: 0.23175506, g: 0.37448075, b: 0.5283019, a: 0}
+  team:
+    m_InternalValue: 0
+  canTag:
+    m_InternalValue: 1
+  listener: {fileID: 802664721855893088}
+  onPlayerTaggedAudio: {fileID: 5843134400224666203, guid: 263a401be2e7c794ca5f48b5ad1847a3, type: 3}
 --- !u!114 &7482889059844857937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +204,7 @@ GameObject:
   - component: {fileID: 4048842601797740671}
   - component: {fileID: 6832350049671267701}
   - component: {fileID: 2901751621452264514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,3 +276,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3742102544296555716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3781220557723518758}
+  - component: {fileID: 802664721855893088}
+  m_Layer: 6
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3781220557723518758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742102544296555716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2276185137210789029}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &802664721855893088
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742102544296555716}
+  m_Enabled: 1

@@ -94,9 +94,24 @@ public class PlayerController : MonoBehaviour
             runSpeedMult = runSpeed;
 
         controller.Move(gravity * Time.deltaTime + (velocity * runSpeedMult) * Time.deltaTime);
+        PositionCamera();
         CameraRotation();
     }
 
+    void PositionCamera()
+    {
+        isoTarget.position = transform.position + transform.up;
+
+        Ray ray = new Ray(isoTarget.position, -isoTarget.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, 10.0f, LayerMask.GetMask("Default")))
+        {
+            Camera.main.transform.position = hit.point;
+        }
+        else
+        {
+            Camera.main.transform.localPosition = Vector3.forward * -22.0f;
+        }
+    }
     public void CameraRotation()
     {
         if (Input.GetMouseButton(1))
@@ -104,6 +119,7 @@ public class PlayerController : MonoBehaviour
             viewXY.x += Input.GetAxis("Mouse X") * sensitivity;
             viewXY.y -= Input.GetAxis("Mouse Y") * sensitivity;
         }
+        
         isoTarget.rotation = Quaternion.Euler(viewXY.y, viewXY.x, 0);
     }
 }
